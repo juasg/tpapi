@@ -1,0 +1,45 @@
+{
+  "name": "TPAPI_GetOrderHistory",
+  "description": "Queries V_ORDER_HISTORY for the authenticated customer. Triggered by GET /orders.",
+  "trigger": {
+    "type": "HTTPReceiver",
+    "endpoint": "/tpapi/internal/orders",
+    "method": "GET",
+    "authentication": "ClientCertificate"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "type": "Groovy",
+      "script": "buildOrderHistoryQuery.groovy",
+      "description": "SELECT * FROM V_ORDER_HISTORY WHERE CUSTOMER_ID = ? ORDER BY CREATED_DATE DESC LIMIT ? OFFSET ?",
+      "inputs": ["header.X-Customer-Id", "header.pageSize", "header.offset"]
+    },
+    {
+      "step": 2,
+      "type": "JDBCChannelSender",
+      "receiverSystem": "Snowflake_Receiver"
+    },
+    {
+      "step": 3,
+      "type": "XMLToJSONConverter"
+    },
+    {
+      "step": 4,
+      "type": "Groovy",
+      "script": "mapOrderHistory.groovy",
+      "description": "Wrap rows in PaginatedResponse envelope with total count"
+    }
+  ],
+  "receiverSystems": {
+    "Snowflake_Receiver": {
+      "type": "JDBC",
+      "driver": "net.snowflake.client.jdbc.SnowflakeDriver",
+      "connectionUrl": "jdbc:snowflake://${parameter.SF_ACCOUNT}.snowflakecomputing.com",
+      "database": "TPAPI_READ",
+      "schema": "VIEWS",
+      "warehouse": "TPAPI_WH",
+      "credentials": "${parameter.SF_CREDENTIAL_ALIAS}"
+    }
+  }
+}

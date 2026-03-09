@@ -1,0 +1,78 @@
+{
+  "name": "TPAPI_RegisterCustomer",
+  "description": "Receives POST /customers/register, calls BAPI_CUSTOMER_CREATEFROMDATA in S/4HANA via RFC, returns new customer number.",
+  "trigger": {
+    "type": "HTTPReceiver",
+    "endpoint": "/tpapi/internal/customers/register",
+    "method": "POST",
+    "authentication": "ClientCertificate"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "type": "JSONToXMLConverter"
+    },
+    {
+      "step": 2,
+      "type": "MessageMapping",
+      "mappingResource": "mm_RegisterCustomer_to_BAPI",
+      "description": "Map registration payload to BAPI_CUSTOMER_CREATEFROMDATA input structure",
+      "targetStructure": {
+        "PI_KUNNR": "",
+        "PI_BUKRS": "${parameter.COMPANY_CODE}",
+        "PI_VKORG": "${parameter.SALES_ORG}",
+        "PI_VTWEG": "${parameter.DIST_CHANNEL}",
+        "PI_SPART": "${parameter.DIVISION}",
+        "PE_KNA1": {
+          "NAME1": "$.companyName",
+          "STRAS": "$.address",
+          "ORT01": "$.city",
+          "LAND1": "$.country",
+          "TELF1": "$.phone",
+          "SMTP_ADDR": "$.email",
+          "STCD1": "$.taxId"
+        }
+      }
+    },
+    {
+      "step": 3,
+      "type": "RFCChannelSender",
+      "description": "Call BAPI_CUSTOMER_CREATEFROMDATA via RFC",
+      "receiverSystem": "S4HANA_Receiver",
+      "rfcFunction": "BAPI_CUSTOMER_CREATEFROMDATA",
+      "authentication": "BasicAuthentication"
+    },
+    {
+      "step": 4,
+      "type": "Groovy",
+      "script": "checkBapiReturn.groovy",
+      "description": "Check RETURN table for errors; throw exception if TYPE=E"
+    },
+    {
+      "step": 5,
+      "type": "RFCChannelSender",
+      "description": "Call BAPI_TRANSACTION_COMMIT to persist the customer",
+      "rfcFunction": "BAPI_TRANSACTION_COMMIT"
+    },
+    {
+      "step": 6,
+      "type": "JSONConverter",
+      "description": "Return {customerId: <KUNNR>, message: 'Registration successful'}"
+    }
+  ],
+  "errorHandling": {
+    "type": "ErrorEndProcess",
+    "returnHttpStatus": 400,
+    "logToCloudLogging": true
+  },
+  "receiverSystems": {
+    "S4HANA_Receiver": {
+      "type": "RFC",
+      "host": "${parameter.S4_HOST}",
+      "systemNumber": "${parameter.S4_SYSNR}",
+      "client": "${parameter.S4_CLIENT}",
+      "proxyType": "OnPremise",
+      "cloudConnectorLocationId": "${parameter.CC_LOCATION_ID}"
+    }
+  }
+}

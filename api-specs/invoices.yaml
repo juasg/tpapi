@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: TPAPI — Invoice Management
+  version: "1.0"
+  description: Read billing documents from S/4HANA (API_BILLING_DOCUMENT_SRV).
+
+servers:
+  - url: https://{apim-host}/tpapi/v1
+    variables:
+      apim-host: { default: api.tpapi.io }
+
+security:
+  - BearerAuth: []
+  - ApiKeyAuth: []
+
+paths:
+  /invoices:
+    get:
+      summary: List invoices for the authenticated customer
+      operationId: listInvoices
+      tags: [Invoices]
+      parameters:
+        - name: status
+          in: query
+          schema: { type: string, enum: [OPEN, PAID, OVERDUE, CANCELLED] }
+        - name: page
+          in: query
+          schema: { type: integer, default: 1 }
+        - name: pageSize
+          in: query
+          schema: { type: integer, default: 20 }
+      responses:
+        "200":
+          description: Paginated invoice list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedInvoices'
+
+  /invoices/{id}:
+    get:
+      summary: Get invoice details
+      operationId: getInvoice
+      tags: [Invoices]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Invoice details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+        "404":
+          description: Not found
+
+components:
+  securitySchemes:
+    BearerAuth: { type: http, scheme: bearer, bearerFormat: JWT }
+    ApiKeyAuth: { type: apiKey, in: header, name: x-api-key }
+
+  schemas:
+    Invoice:
+      type: object
+      properties:
+        id: { type: string }
+        invoiceNumber: { type: string, example: "INV-2026-00456" }
+        orderId: { type: string }
+        orderNumber: { type: string }
+        status: { type: string, enum: [OPEN, PAID, OVERDUE, CANCELLED] }
+        issuedAt: { type: string, format: date-time }
+        dueDate: { type: string, format: date }
+        totalAmount: { type: number }
+        currency: { type: string }
+        downloadUrl: { type: string, format: uri }
+
+    PaginatedInvoices:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Invoice' }
+        total: { type: integer }
+        page: { type: integer }
+        pageSize: { type: integer }

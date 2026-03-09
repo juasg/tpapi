@@ -1,0 +1,86 @@
+openapi: 3.0.3
+info:
+  title: TPAPI — Product Catalog
+  version: "1.0"
+  description: Browse the active product master from Snowflake V_PRODUCT_CATALOG view.
+
+servers:
+  - url: https://{apim-host}/tpapi/v1
+    variables:
+      apim-host: { default: api.tpapi.io }
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /products:
+    get:
+      summary: List available products
+      operationId: listProducts
+      tags: [Products]
+      parameters:
+        - name: search
+          in: query
+          schema: { type: string }
+        - name: category
+          in: query
+          schema: { type: string }
+        - name: page
+          in: query
+          schema: { type: integer, default: 1 }
+        - name: pageSize
+          in: query
+          schema: { type: integer, default: 50 }
+      responses:
+        "200":
+          description: Paginated product list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedProducts'
+
+  /products/{id}:
+    get:
+      summary: Get product details
+      operationId: getProduct
+      tags: [Products]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Product detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+components:
+  securitySchemes:
+    ApiKeyAuth: { type: apiKey, in: header, name: x-api-key }
+
+  schemas:
+    Product:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        description: { type: string }
+        price: { type: number, format: double }
+        currency: { type: string, example: USD }
+        unit: { type: string, example: EA }
+        category: { type: string }
+        available: { type: boolean }
+        minOrderQty: { type: integer }
+
+    PaginatedProducts:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Product' }
+        total: { type: integer }
+        page: { type: integer }
+        pageSize: { type: integer }

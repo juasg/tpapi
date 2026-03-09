@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1300" height="980" viewBox="0 0 1300 980" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="arr"       markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#94A3B8"/></marker>
+    <marker id="arrGreen"  markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#16A34A"/></marker>
+    <marker id="arrOrange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#EA580C"/></marker>
+    <marker id="arrBlue"   markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563EB"/></marker>
+    <marker id="arrPurple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#7C3AED"/></marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#00000022"/>
+    </filter>
+  </defs>
+
+  <!-- ══ BACKGROUND ══════════════════════════════════════════════════════════ -->
+  <rect width="1300" height="980" fill="#F8FAFC"/>
+
+  <!-- ══ TITLE BAR ═══════════════════════════════════════════════════════════ -->
+  <rect x="0" y="0" width="1300" height="64" fill="#0F172A"/>
+  <text x="650" y="26" text-anchor="middle" font-size="18" font-weight="700" fill="#F1F5F9">TPAPI — Solution Landscape Diagram</text>
+  <text x="650" y="48" text-anchor="middle" font-size="12" fill="#94A3B8">B2B Order-to-Cash Platform · SAP BTP · S/4HANA · Integration Suite · Snowflake</text>
+
+  <!-- ══ LAYER LABELS (left margin) ═══════════════════════════════════════════ -->
+  <text x="18" y="122" text-anchor="middle" font-size="9" font-weight="700" fill="#64748B" transform="rotate(-90,18,122)">USERS</text>
+  <text x="18" y="295" text-anchor="middle" font-size="9" font-weight="700" fill="#64748B" transform="rotate(-90,18,295)">FRONTEND · SAP BTP</text>
+  <text x="18" y="460" text-anchor="middle" font-size="9" font-weight="700" fill="#64748B" transform="rotate(-90,18,460)">SECURITY</text>
+  <text x="18" y="556" text-anchor="middle" font-size="9" font-weight="700" fill="#64748B" transform="rotate(-90,18,556)">API GATEWAY</text>
+  <text x="18" y="660" text-anchor="middle" font-size="9" font-weight="700" fill="#64748B" transform="rotate(-90,18,660)">BACKEND</text>
+  <text x="18" y="815" text-anchor="middle" font-size="9" font-weight="700" fill="#64748B" transform="rotate(-90,18,815)">DATA STORES</text>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════════
+       LAYER 1 — USERS
+  ══════════════════════════════════════════════════════════════════════════════ -->
+  <rect x="32" y="76" width="1236" height="82" rx="8" fill="#DBEAFE" stroke="#3B82F6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="650" y="95" text-anchor="middle" font-size="11" font-weight="700" fill="#1D4ED8">EXTERNAL USERS &amp; CONSUMERS</text>
+
+  <!-- User boxes -->
+  <rect x="52"  y="102" width="270" height="44" rx="6" fill="#2563EB" stroke="#1D4ED8"/>
+  <text x="187" y="119" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">B2B Customers</text>
+  <text x="187" y="136" text-anchor="middle" font-size="9"  fill="#BFDBFE">Web Browser · Product Orders · Invoices</text>
+
+  <rect x="340" y="102" width="270" height="44" rx="6" fill="#2563EB" stroke="#1D4ED8"/>
+  <text x="475" y="119" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">API Developers</text>
+  <text x="475" y="136" text-anchor="middle" font-size="9"  fill="#BFDBFE">Self-service API Keys · Dev Portal · Playground</text>
+
+  <rect x="628" y="102" width="270" height="44" rx="6" fill="#2563EB" stroke="#1D4ED8"/>
+  <text x="763" y="119" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">B2B ERP / EDI Systems</text>
+  <text x="763" y="136" text-anchor="middle" font-size="9"  fill="#BFDBFE">Machine-to-Machine · OAuth2 Client Credentials</text>
+
+  <rect x="916" y="102" width="340" height="44" rx="6" fill="#1E40AF" stroke="#1D4ED8"/>
+  <text x="1086" y="119" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Platform Admins</text>
+  <text x="1086" y="136" text-anchor="middle" font-size="9"  fill="#BFDBFE">Customer Approval · API Key Review · Order Monitoring</text>
+
+  <!-- Arrow down -->
+  <line x1="650" y1="158" x2="650" y2="178" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="660" y="172" font-size="9" fill="#94A3B8">HTTPS</text>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════════
+       LAYER 2 — FRONTEND (SAP BTP — React SPA)
+  ══════════════════════════════════════════════════════════════════════════════ -->
+  <rect x="32" y="180" width="1236" height="205" rx="8" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="650" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#5B21B6">PRESENTATION LAYER — React SPA on SAP BTP (Cloud Foundry / Kyma)</text>
+
+  <!-- Portal 1: Order Portal -->
+  <rect x="48" y="207" width="386" height="130" rx="6" fill="#DDD6FE" stroke="#7C3AED"/>
+  <text x="241" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="#4C1D95">E-commerce Order Portal  /portal/*</text>
+  <text x="66"  y="243" font-size="9" fill="#5B21B6">● Age Verification Gate (localStorage)</text>
+  <text x="66"  y="258" font-size="9" fill="#5B21B6">● Product Catalog  — Unsplash/Picsum images by category</text>
+  <text x="66"  y="273" font-size="9" fill="#5B21B6">● Order Placement  — POST to S/4HANA via iFlow</text>
+  <text x="66"  y="288" font-size="9" fill="#5B21B6">● Order History &amp; Status  — reads from Snowflake</text>
+  <text x="66"  y="303" font-size="9" fill="#5B21B6">● Invoice List  — reads from S/4HANA</text>
+  <text x="66"  y="318" font-size="9" fill="#5B21B6">● Shipment Tracking  — reads from Snowflake</text>
+
+  <!-- Portal 2: Dev Portal -->
+  <rect x="457" y="207" width="386" height="130" rx="6" fill="#DDD6FE" stroke="#7C3AED"/>
+  <text x="650" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="#4C1D95">API Developer Portal  /devportal/*</text>
+  <text x="475" y="243" font-size="9" fill="#5B21B6">● API Catalog  — OpenAPI specs via Redoc/Swagger UI</text>
+  <text x="475" y="258" font-size="9" fill="#5B21B6">● API Key Manager  — request · view · revoke keys</text>
+  <text x="475" y="273" font-size="9" fill="#5B21B6">● API Playground  — live sandbox wired to backend</text>
+  <text x="475" y="288" font-size="9" fill="#5B21B6">● Onboarding Wizard  — register → API key → first call</text>
+  <text x="475" y="303" font-size="9" fill="#5B21B6">● Usage Metrics  — requests today / limit per key</text>
+  <text x="475" y="318" font-size="9" fill="#5B21B6">● Self-service customer registration</text>
+
+  <!-- Portal 3: Admin Portal -->
+  <rect x="866" y="207" width="386" height="130" rx="6" fill="#C4B5FD" stroke="#6D28D9"/>
+  <text x="1059" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="#3B0764">Admin Portal  /admin/*</text>
+  <text x="884"  y="243" font-size="9" fill="#4C1D95">● Dashboard  — customers · orders · pending counts (live)</text>
+  <text x="884"  y="258" font-size="9" fill="#4C1D95">● Customers  — KNA1 list + registration approvals</text>
+  <text x="884"  y="273" font-size="9" fill="#4C1D95">● Orders  — cross-customer view with status filter</text>
+  <text x="884"  y="288" font-size="9" fill="#4C1D95">● API Keys  — approve / reject / view issued keys</text>
+  <text x="884"  y="303" font-size="9" fill="#4C1D95">● Unlock gate  — x-admin-secret (sessionStorage)</text>
+  <text x="884"  y="318" font-size="9" fill="#4C1D95">● Auto-refresh stats every 10–15 s (Tanstack Query)</text>
+
+  <!-- Tech stack bar -->
+  <rect x="48" y="345" width="1204" height="30" rx="4" fill="#7C3AED" opacity="0.15"/>
+  <text x="650" y="365" text-anchor="middle" font-size="9" fill="#4C1D95" font-weight="600">
+    React 18 + TypeScript · React Router v6 · Tanstack Query · SAP UI5 Web Components · Vite · Hosted on BTP (CF static / Kyma nginx)
+  </text>
+
+  <!-- Arrow down -->
+  <line x1="650" y1="385" x2="650" y2="408" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════════
+       LAYER 3 — SECURITY
+  ══════════════════════════════════════════════════════════════════════════════ -->
+  <rect x="32" y="410" width="1236" height="80" rx="8" fill="#FCE7F3" stroke="#DB2777" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="650" y="428" text-anchor="middle" font-size="11" font-weight="700" fill="#9D174D">SECURITY &amp; IDENTITY</text>
+
+  <rect x="52"  y="435" width="270" height="44" rx="5" fill="#FBCFE8" stroke="#DB2777"/>
+  <text x="187" y="452" text-anchor="middle" font-size="10" font-weight="700" fill="#831843">SAP IAS — Identity Auth Service</text>
+  <text x="187" y="468" text-anchor="middle" font-size="9"  fill="#9D174D">OAuth 2.0 · OIDC · SAML · MFA · SSO</text>
+
+  <rect x="340" y="435" width="270" height="44" rx="5" fill="#FBCFE8" stroke="#DB2777"/>
+  <text x="475" y="452" text-anchor="middle" font-size="10" font-weight="700" fill="#831843">JWT Bearer Token Auth</text>
+  <text x="475" y="468" text-anchor="middle" font-size="9"  fill="#9D174D">requireAuth middleware · 15-min expiry · HS256</text>
+
+  <rect x="628" y="435" width="270" height="44" rx="5" fill="#FBCFE8" stroke="#DB2777"/>
+  <text x="763" y="452" text-anchor="middle" font-size="10" font-weight="700" fill="#831843">Age Verification Gate</text>
+  <text x="763" y="468" text-anchor="middle" font-size="9"  fill="#9D174D">18+ confirm · localStorage persist · blocks /portal/*</text>
+
+  <rect x="916" y="435" width="340" height="44" rx="5" fill="#F9A8D4" stroke="#BE185D"/>
+  <text x="1086" y="452" text-anchor="middle" font-size="10" font-weight="700" fill="#831843">Admin Secret (x-admin-secret)</text>
+  <text x="1086" y="468" text-anchor="middle" font-size="9"  fill="#9D174D">ADMIN_SECRET env var · requireAdmin middleware · sessionStorage</text>
+
+  <!-- Arrow down -->
+  <line x1="650" y1="490" x2="650" y2="510" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════════
+       LAYER 4 — API GATEWAY (Integration Suite)
+  ══════════════════════════════════════════════════════════════════════════════ -->
+  <rect x="32" y="512" width="1236" height="80" rx="8" fill="#D1FAE5" stroke="#059669" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="650" y="530" text-anchor="middle" font-size="11" font-weight="700" fill="#065F46">SAP INTEGRATION SUITE — API MANAGEMENT GATEWAY</text>
+
+  <rect x="52"  y="537" width="215" height="44" rx="5" fill="#A7F3D0" stroke="#059669"/>
+  <text x="160" y="554" text-anchor="middle" font-size="10" font-weight="700" fill="#064E3B">API Proxy &amp; Policies</text>
+  <text x="160" y="569" text-anchor="middle" font-size="9"  fill="#065F46">Rate limit · CORS · IP allowlist</text>
+
+  <rect x="280" y="537" width="215" height="44" rx="5" fill="#A7F3D0" stroke="#059669"/>
+  <text x="387" y="554" text-anchor="middle" font-size="10" font-weight="700" fill="#064E3B">API Products &amp; Plans</text>
+  <text x="387" y="569" text-anchor="middle" font-size="9"  fill="#065F46">Basic · Standard · Enterprise tiers</text>
+
+  <rect x="508" y="537" width="215" height="44" rx="5" fill="#A7F3D0" stroke="#059669"/>
+  <text x="615" y="554" text-anchor="middle" font-size="10" font-weight="700" fill="#064E3B">OAuth2 / API Key Validation</text>
+  <text x="615" y="569" text-anchor="middle" font-size="9"  fill="#065F46">Client credentials · Token introspect</text>
+
+  <rect x="736" y="537" width="215" height="44" rx="5" fill="#A7F3D0" stroke="#059669"/>
+  <text x="843" y="554" text-anchor="middle" font-size="10" font-weight="700" fill="#064E3B">Cloud Integration (iFlows)</text>
+  <text x="843" y="569" text-anchor="middle" font-size="9"  fill="#065F46">OData · REST · Mapping · Transform</text>
+
+  <rect x="964" y="537" width="292" height="44" rx="5" fill="#6EE7B7" stroke="#047857"/>
+  <text x="1110" y="554" text-anchor="middle" font-size="10" font-weight="700" fill="#064E3B">SAP Cloud Logging &amp; Monitoring</text>
+  <text x="1110" y="569" text-anchor="middle" font-size="9"  fill="#065F46">Request/response logs · Alerts · Metrics</text>
+
+  <!-- Arrow down -->
+  <line x1="650" y1="592" x2="650" y2="612" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════════
+       LAYER 5 — BACKEND (Node.js / Express)
+  ══════════════════════════════════════════════════════════════════════════════ -->
+  <rect x="32" y="614" width="1236" height="100" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="650" y="633" text-anchor="middle" font-size="11" font-weight="700" fill="#92400E">BACKEND API — Node.js / Express on SAP BTP (Kyma)</text>
+
+  <!-- Route boxes -->
+  <rect x="52"  y="641" width="155" height="60" rx="5" fill="#FDE68A" stroke="#D97706"/>
+  <text x="130" y="658" text-anchor="middle" font-size="9" font-weight="700" fill="#78350F">Auth</text>
+  <text x="130" y="672" text-anchor="middle" font-size="8" fill="#92400E">POST /oauth/token</text>
+  <text x="130" y="685" text-anchor="middle" font-size="8" fill="#92400E">GET  /oauth/me</text>
+
+  <rect x="218" y="641" width="155" height="60" rx="5" fill="#FDE68A" stroke="#D97706"/>
+  <text x="296" y="658" text-anchor="middle" font-size="9" font-weight="700" fill="#78350F">Products &amp; Catalog</text>
+  <text x="296" y="672" text-anchor="middle" font-size="8" fill="#92400E">GET /api/products</text>
+  <text x="296" y="685" text-anchor="middle" font-size="8" fill="#92400E">GET /api/products/:id</text>
+
+  <rect x="384" y="641" width="155" height="60" rx="5" fill="#FDE68A" stroke="#D97706"/>
+  <text x="462" y="658" text-anchor="middle" font-size="9" font-weight="700" fill="#78350F">Orders</text>
+  <text x="462" y="672" text-anchor="middle" font-size="8" fill="#92400E">GET /api/orders</text>
+  <text x="462" y="685" text-anchor="middle" font-size="8" fill="#92400E">GET /api/orders/:id · POST</text>
+
+  <rect x="550" y="641" width="155" height="60" rx="5" fill="#FDE68A" stroke="#D97706"/>
+  <text x="628" y="658" text-anchor="middle" font-size="9" font-weight="700" fill="#78350F">Invoices &amp; Shipments</text>
+  <text x="628" y="672" text-anchor="middle" font-size="8" fill="#92400E">GET /api/invoices</text>
+  <text x="628" y="685" text-anchor="middle" font-size="8" fill="#92400E">GET /api/shipments/:id</text>
+
+  <rect x="716" y="641" width="165" height="60" rx="5" fill="#FDE68A" stroke="#D97706"/>
+  <text x="799" y="658" text-anchor="middle" font-size="9" font-weight="700" fill="#78350F">Customers &amp; Registration</text>
+  <text x="799" y="672" text-anchor="middle" font-size="8" fill="#92400E">GET  /api/customers</text>
+  <text x="799" y="685" text-anchor="middle" font-size="8" fill="#92400E">POST /api/customers/register</text>
+
+  <rect x="892" y="641" width="175" height="60" rx="5" fill="#FDE68A" stroke="#D97706"/>
+  <text x="979" y="658" text-anchor="middle" font-size="9" font-weight="700" fill="#78350F">Developer / API Keys</text>
+  <text x="979" y="672" text-anchor="middle" font-size="8" fill="#92400E">GET/POST /api/developer/api-keys</text>
+  <text x="979" y="685" text-anchor="middle" font-size="8" fill="#92400E">PATCH admin/approve · reject</text>
+
+  <rect x="1078" y="641" width="178" height="60" rx="5" fill="#FCD34D" stroke="#B45309"/>
+  <text x="1167" y="658" text-anchor="middle" font-size="9" font-weight="700" fill="#78350F">Admin</text>
+  <text x="1167" y="672" text-anchor="middle" font-size="8" fill="#92400E">GET /api/admin/stats · orders</text>
+  <text x="1167" y="685" text-anchor="middle" font-size="8" fill="#92400E">GET /api/admin/customers</text>
+
+  <!-- Arrows down — split to two data stores -->
+  <line x1="380" y1="714" x2="280" y2="736" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="280" y="730" font-size="8" fill="#94A3B8" text-anchor="middle">reads</text>
+  <line x1="900" y1="714" x2="1000" y2="736" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="1000" y="730" font-size="8" fill="#94A3B8" text-anchor="middle">writes</text>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════════
+       LAYER 6 — DATA STORES (Left: Snowflake, Right: S/4HANA)
+  ══════════════════════════════════════════════════════════════════════════════ -->
+
+  <!-- Snowflake box -->
+  <rect x="32" y="738" width="590" height="168" rx="8" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="327" y="758" text-anchor="middle" font-size="12" font-weight="700" fill="#075985">READ LAYER — Snowflake  (TPAPI_READ database)</text>
+  <text x="327" y="773" text-anchor="middle" font-size="9" fill="#0369A1">Read-optimised · Analytics-ready · Offloads S/4HANA</text>
+
+  <rect x="52"  y="780" width="170" height="114" rx="5" fill="#BAE6FD" stroke="#0284C7"/>
+  <text x="137" y="797" text-anchor="middle" font-size="9" font-weight="700" fill="#0C4A6E">Views Exposed</text>
+  <text x="70"  y="813" font-size="8" fill="#075985">V_ORDER_HISTORY</text>
+  <text x="70"  y="827" font-size="8" fill="#075985">V_ORDER_STATUS</text>
+  <text x="70"  y="841" font-size="8" fill="#075985">V_PRODUCT_CATALOG</text>
+  <text x="70"  y="855" font-size="8" fill="#075985">V_SHIPMENT_STATUS</text>
+  <text x="70"  y="869" font-size="8" fill="#075985">V_INVOICE_LIST</text>
+  <text x="70"  y="883" font-size="8" fill="#075985">V_CUSTOMER_SUMMARY</text>
+
+  <rect x="234" y="780" width="170" height="114" rx="5" fill="#BAE6FD" stroke="#0284C7"/>
+  <text x="319" y="797" text-anchor="middle" font-size="9" font-weight="700" fill="#0C4A6E">Raw Tables (CDC)</text>
+  <text x="252" y="813" font-size="8" fill="#075985">VBAK / VBAP  (Sales Orders)</text>
+  <text x="252" y="827" font-size="8" fill="#075985">VBRK / VBRP  (Billing)</text>
+  <text x="252" y="841" font-size="8" fill="#075985">LIKP / LIPS   (Delivery)</text>
+  <text x="252" y="855" font-size="8" fill="#075985">MARA / MVKE  (Materials)</text>
+  <text x="252" y="869" font-size="8" fill="#075985">KNA1 / KNVV  (Customers)</text>
+  <text x="252" y="883" font-size="8" fill="#075985">VBFA          (Doc Flow)</text>
+
+  <rect x="416" y="780" width="190" height="114" rx="5" fill="#BAE6FD" stroke="#0284C7"/>
+  <text x="511" y="797" text-anchor="middle" font-size="9" font-weight="700" fill="#0C4A6E">Access Pattern</text>
+  <text x="434" y="813" font-size="8" fill="#075985">Snowflake JDBC Adapter</text>
+  <text x="434" y="827" font-size="8" fill="#075985">IS iFlows → REST proxy</text>
+  <text x="434" y="841" font-size="8" fill="#075985">Near-real-time CDC (≤60s)</text>
+  <text x="434" y="855" font-size="8" fill="#075985">Replicated via Datasphere</text>
+  <text x="434" y="869" font-size="8" fill="#075985">Admin: /api/admin routes</text>
+  <text x="434" y="883" font-size="8" fill="#075985">Customer: /api/orders · /api/products</text>
+
+  <!-- CDC arrow (center) -->
+  <line x1="622" y1="822" x2="678" y2="822" stroke="#EA580C" stroke-width="2.5" stroke-dasharray="7,4" marker-end="url(#arrOrange)"/>
+  <text x="650" y="812" text-anchor="middle" font-size="8" font-weight="700" fill="#EA580C">CDC</text>
+  <text x="650" y="836" text-anchor="middle" font-size="8" fill="#EA580C">Datasphere</text>
+  <line x1="678" y1="822" x2="622" y2="822" stroke="#EA580C" stroke-width="0.5" stroke-dasharray="7,4"/>
+
+  <!-- S/4HANA box -->
+  <rect x="678" y="738" width="590" height="168" rx="8" fill="#FEF9C3" stroke="#CA8A04" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="973" y="758" text-anchor="middle" font-size="12" font-weight="700" fill="#713F12">TRANSACTIONAL BACKEND — SAP S/4HANA (ERP)</text>
+  <text x="973" y="773" text-anchor="middle" font-size="9" fill="#854D0E">Single source of truth · All write operations · Fallback reads</text>
+
+  <rect x="698" y="780" width="170" height="114" rx="5" fill="#FEF08A" stroke="#CA8A04"/>
+  <text x="783" y="797" text-anchor="middle" font-size="9" font-weight="700" fill="#422006">SD Module</text>
+  <text x="716" y="813" font-size="8" fill="#713F12">API_SALES_ORDER_SRV</text>
+  <text x="716" y="827" font-size="8" fill="#713F12">API_DELIVERY_SRV</text>
+  <text x="716" y="841" font-size="8" fill="#713F12">VBAK / VBAP / VBFA</text>
+  <text x="716" y="855" font-size="8" fill="#713F12">LIKP / LIPS</text>
+  <text x="716" y="869" font-size="8" fill="#713F12">Create · Confirm Orders</text>
+  <text x="716" y="883" font-size="8" fill="#713F12">Delivery processing</text>
+
+  <rect x="880" y="780" width="170" height="114" rx="5" fill="#FEF08A" stroke="#CA8A04"/>
+  <text x="965" y="797" text-anchor="middle" font-size="9" font-weight="700" fill="#422006">FI / MM Module</text>
+  <text x="898" y="813" font-size="8" fill="#713F12">API_BILLING_DOCUMENT_SRV</text>
+  <text x="898" y="827" font-size="8" fill="#713F12">VBRK / VBRP (Billing)</text>
+  <text x="898" y="841" font-size="8" fill="#713F12">MARA / MVKE (Materials)</text>
+  <text x="898" y="855" font-size="8" fill="#713F12">Invoicing · A/R</text>
+  <text x="898" y="869" font-size="8" fill="#713F12">Product Master</text>
+  <text x="898" y="883" font-size="8" fill="#713F12">Pricing conditions</text>
+
+  <rect x="1062" y="780" width="190" height="114" rx="5" fill="#FEF08A" stroke="#CA8A04"/>
+  <text x="1157" y="797" text-anchor="middle" font-size="9" font-weight="700" fill="#422006">Customer Master / Auth</text>
+  <text x="1080" y="813" font-size="8" fill="#713F12">API_BUSINESS_PARTNER</text>
+  <text x="1080" y="827" font-size="8" fill="#713F12">BAPI_CUSTOMER_CREATEFROMDATA</text>
+  <text x="1080" y="841" font-size="8" fill="#713F12">KNA1 / KNVV</text>
+  <text x="1080" y="855" font-size="8" fill="#713F12">SAP Cloud Connector</text>
+  <text x="1080" y="869" font-size="8" fill="#713F12">BTP Connectivity Service</text>
+  <text x="1080" y="883" font-size="8" fill="#713F12">On-premise tunnel</text>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════════
+       LEGEND / FOOTER
+  ══════════════════════════════════════════════════════════════════════════════ -->
+  <rect x="32" y="918" width="1236" height="52" rx="6" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <text x="50" y="934" font-size="9" font-weight="700" fill="#334155">DATA FLOWS:</text>
+  <line x1="130" y1="930" x2="170" y2="930" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="175" y="934" font-size="9" fill="#475569">REST/JSON (sync)</text>
+  <line x1="290" y1="930" x2="330" y2="930" stroke="#EA580C" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrOrange)"/>
+  <text x="335" y="934" font-size="9" fill="#475569">CDC Replication (Datasphere, ≤60s)</text>
+  <line x1="530" y1="930" x2="570" y2="930" stroke="#16A34A" stroke-width="2" marker-end="url(#arrGreen)"/>
+  <text x="575" y="934" font-size="9" fill="#475569">Read (Snowflake)</text>
+  <line x1="670" y1="930" x2="710" y2="930" stroke="#2563EB" stroke-width="2" marker-end="url(#arrBlue)"/>
+  <text x="715" y="934" font-size="9" fill="#475569">Write (S/4HANA via iFlow)</text>
+
+  <text x="50"  y="958" font-size="9" font-weight="700" fill="#334155">AUTH:</text>
+  <text x="90"  y="958" font-size="9" fill="#475569">Portal/DevPortal → JWT Bearer (OAuth2 Client Credentials via SAP IAS)</text>
+  <text x="560" y="958" font-size="9" font-weight="700" fill="#334155">|  Admin →</text>
+  <text x="610" y="958" font-size="9" fill="#475569">x-admin-secret header (ADMIN_SECRET env var)</text>
+  <text x="900" y="958" font-size="9" font-weight="700" fill="#334155">|  Age Gate →</text>
+  <text x="960" y="958" font-size="9" fill="#475569">localStorage tpapi_age_verified (blocks /portal/*)</text>
+
+</svg>

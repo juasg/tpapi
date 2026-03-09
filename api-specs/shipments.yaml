@@ -1,0 +1,68 @@
+openapi: 3.0.3
+info:
+  title: TPAPI — Shipment Tracking
+  version: "1.0"
+  description: Real-time delivery tracking from Snowflake V_SHIPMENT_STATUS view.
+
+servers:
+  - url: https://{apim-host}/tpapi/v1
+    variables:
+      apim-host: { default: api.tpapi.io }
+
+security:
+  - BearerAuth: []
+  - ApiKeyAuth: []
+
+paths:
+  /shipments/{orderId}:
+    get:
+      summary: Get shipment status for an order
+      operationId: getShipment
+      tags: [Shipments]
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Shipment with tracking events
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+        "404":
+          description: No shipment found for this order
+
+components:
+  securitySchemes:
+    BearerAuth: { type: http, scheme: bearer, bearerFormat: JWT }
+    ApiKeyAuth: { type: apiKey, in: header, name: x-api-key }
+
+  schemas:
+    Shipment:
+      type: object
+      properties:
+        id: { type: string }
+        orderId: { type: string }
+        orderNumber: { type: string }
+        status:
+          type: string
+          enum: [PENDING, PICKED, IN_TRANSIT, OUT_FOR_DELIVERY, DELIVERED, FAILED]
+        carrier: { type: string, example: FedEx }
+        trackingNumber: { type: string }
+        estimatedDelivery: { type: string, format: date }
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShipmentEvent'
+
+    ShipmentEvent:
+      type: object
+      properties:
+        timestamp: { type: string, format: date-time }
+        status:
+          type: string
+          enum: [PENDING, PICKED, IN_TRANSIT, OUT_FOR_DELIVERY, DELIVERED, FAILED]
+        location: { type: string }
+        description: { type: string }

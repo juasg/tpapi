@@ -1,0 +1,61 @@
+.adm-orders { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.adm-page-header { display: flex; flex-direction: column; gap: .25rem; }
+.adm-page-title  { font-size: 1.75rem; font-weight: 700; color: #e6edf3; margin: 0; }
+.adm-page-sub    { font-size: .875rem; color: #8b949e; margin: 0; }
+
+.adm-filters {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+.adm-filter-input,
+.adm-filter-select {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #e6edf3;
+  padding: .5rem .875rem;
+  font-size: .875rem;
+  font-family: inherit;
+  outline: none;
+}
+.adm-filter-input  { width: 220px; }
+.adm-filter-select { min-width: 160px; }
+.adm-filter-input:focus,
+.adm-filter-select:focus { border-color: #8957e5; }
+.adm-filter-select option { background: #161b22; }
+
+.adm-result-count { font-size: .8rem; color: #484f58; margin-left: auto; }
+
+.adm-table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+.adm-table th {
+  text-align: left; padding: .5rem .875rem; background: #161b22;
+  border-bottom: 1px solid #30363d; color: #484f58;
+  font-size: .7rem; text-transform: uppercase; letter-spacing: .05em;
+}
+.adm-table td {
+  padding: .75rem .875rem;
+  border-bottom: 1px solid #21262d;
+  color: #8b949e;
+  vertical-align: middle;
+}
+.adm-table td code { font-family: monospace; color: #79c0ff; font-size: .75rem; }
+.adm-amount { font-weight: 600; color: #e6edf3 !important; font-variant-numeric: tabular-nums; }
+
+.badge {
+  display: inline-block; padding: .25rem .625rem; border-radius: 12px;
+  font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+  white-space: nowrap;
+}
+.badge--blue   { background: #1f3a5f; color: #58a6ff; }
+.badge--purple { background: #2d1f6e; color: #b392f0; }
+.badge--yellow { background: #3d2800; color: #e3b341; }
+.badge--green  { background: #1f4a2e; color: #3fb950; }
+.badge--red    { background: #3d0000; color: #f85149; }
+.badge--gray   { background: #21262d; color: #484f58; }
+
+.adm-loading { color: #8b949e; padding: 2rem; text-align: center; }
+.adm-error   { color: #f85149; padding: 2rem; font-size: .875rem; }
+.adm-empty   { color: #484f58; padding: 3rem; text-align: center; font-size: .875rem; }

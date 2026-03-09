@@ -1,0 +1,47 @@
+{
+  "name": "TPAPI_GetOrderStatus",
+  "description": "Queries V_ORDER_STATUS in Snowflake for real-time order status. Triggered by GET /orders/{id}/status.",
+  "trigger": {
+    "type": "HTTPReceiver",
+    "endpoint": "/tpapi/internal/orders/{id}/status",
+    "method": "GET",
+    "authentication": "ClientCertificate"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "type": "Groovy",
+      "script": "buildSnowflakeQuery.groovy",
+      "description": "Build SQL: SELECT ORDER_ID, STATUS, UPDATED_AT FROM V_ORDER_STATUS WHERE ORDER_ID = ? AND CUSTOMER_ID = ?",
+      "inputs": ["header.path.id", "header.X-Customer-Id"]
+    },
+    {
+      "step": 2,
+      "type": "JDBCChannelSender",
+      "receiverSystem": "Snowflake_Receiver",
+      "description": "Execute parameterized query against Snowflake"
+    },
+    {
+      "step": 3,
+      "type": "XMLToJSONConverter",
+      "description": "Convert JDBC result set XML to JSON"
+    },
+    {
+      "step": 4,
+      "type": "Groovy",
+      "script": "mapOrderStatus.groovy",
+      "description": "Return 404 if no rows; otherwise return {id, status, updatedAt}"
+    }
+  ],
+  "receiverSystems": {
+    "Snowflake_Receiver": {
+      "type": "JDBC",
+      "driver": "net.snowflake.client.jdbc.SnowflakeDriver",
+      "connectionUrl": "jdbc:snowflake://${parameter.SF_ACCOUNT}.snowflakecomputing.com",
+      "database": "TPAPI_READ",
+      "schema": "VIEWS",
+      "warehouse": "TPAPI_WH",
+      "credentials": "${parameter.SF_CREDENTIAL_ALIAS}"
+    }
+  }
+}

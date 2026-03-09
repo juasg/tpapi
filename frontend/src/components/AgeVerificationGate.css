@@ -1,0 +1,131 @@
+.age-gate-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0f1e 0%, #0d1117 100%);
+  padding: 2rem;
+}
+
+.age-gate-card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.age-gate-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  align-self: flex-start;
+}
+
+.age-gate-logo-mark {
+  background: #0a6ed1;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.875rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: 6px;
+}
+
+.age-gate-logo-text {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #e6edf3;
+}
+
+.age-gate-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #1f3a5f;
+  border: 2px solid #58a6ff;
+  color: #58a6ff;
+  font-size: 1.375rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.age-gate-icon--denied {
+  background: #3d0000;
+  border-color: #f85149;
+  color: #f85149;
+  font-size: 1.75rem;
+}
+
+.age-gate-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #e6edf3;
+  margin: 0;
+}
+
+.age-gate-body {
+  font-size: 0.9rem;
+  color: #8b949e;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.age-gate-body strong {
+  color: #e6edf3;
+}
+
+.age-gate-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.age-gate-btn {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.age-gate-btn--confirm {
+  background: #238636;
+  color: #fff;
+}
+
+.age-gate-btn--confirm:hover {
+  background: #2ea043;
+}
+
+.age-gate-btn--deny {
+  background: transparent;
+  color: #8b949e;
+  border: 1px solid #30363d;
+}
+
+.age-gate-btn--deny:hover {
+  color: #e6edf3;
+  border-color: #58a6ff33;
+}
+
+.age-gate-notice {
+  font-size: 0.72rem;
+  color: #484f58;
+  margin: 0;
+}

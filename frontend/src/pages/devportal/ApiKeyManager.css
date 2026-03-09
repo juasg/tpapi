@@ -1,0 +1,82 @@
+.key-manager-page { display: flex; flex-direction: column; gap: 2rem; }
+.km-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.dev-page-title { font-size: 1.75rem; font-weight: 700; color: #e6edf3; margin: 0; }
+.dev-page-subtitle { font-size: .875rem; color: #8b949e; margin: .25rem 0 0; }
+.km-new-btn {
+  background: #238636; color: #fff; border: none; padding: .5rem 1.125rem;
+  border-radius: 6px; font-size: .875rem; font-weight: 600; cursor: pointer;
+}
+.km-new-btn:hover { background: #2ea043; }
+
+.km-form-card {
+  background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 1.5rem;
+}
+.km-form-title { font-size: 1rem; font-weight: 600; color: #e6edf3; margin: 0 0 1.25rem; }
+.km-form { display: flex; flex-direction: column; gap: 1rem; max-width: 560px; }
+.km-field { display: flex; flex-direction: column; gap: .375rem; }
+.km-field label { font-size: .8rem; font-weight: 600; color: #8b949e; }
+.km-input {
+  background: #0d1117; border: 1px solid #30363d; border-radius: 6px;
+  color: #e6edf3; padding: .5rem .75rem; font-size: .875rem; font-family: inherit;
+  outline: none; width: 100%; box-sizing: border-box;
+}
+.km-input:focus { border-color: #58a6ff; box-shadow: 0 0 0 2px rgba(88,166,255,.15); }
+.km-textarea { resize: vertical; }
+.km-input option { background: #21262d; }
+
+.km-error { background: #3d0000; border: 1px solid #f85149; border-radius: 6px; padding: .625rem .875rem; color: #f85149; font-size: .875rem; }
+.km-form-actions { display: flex; justify-content: flex-end; gap: .75rem; }
+.km-cancel-btn {
+  background: transparent; color: #8b949e; border: 1px solid #30363d;
+  padding: .5rem 1rem; border-radius: 6px; font-size: .875rem; cursor: pointer;
+}
+.km-cancel-btn:hover { color: #e6edf3; }
+.km-submit-btn {
+  background: #238636; color: #fff; border: none;
+  padding: .5rem 1.125rem; border-radius: 6px; font-size: .875rem; font-weight: 600; cursor: pointer;
+}
+.km-submit-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+.km-keys-list { display: flex; flex-direction: column; gap: .875rem; }
+.km-key-card {
+  background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 1.25rem;
+  display: flex; flex-direction: column; gap: .75rem;
+}
+.km-key-header { display: flex; flex-direction: column; gap: .25rem; }
+.km-key-header > div:first-child { display: flex; align-items: center; gap: .75rem; }
+.km-key-name { font-size: .95rem; font-weight: 600; color: #e6edf3; }
+.km-status {
+  font-size: .7rem; font-weight: 700; padding: .2rem .5rem; border-radius: 10px;
+  text-transform: uppercase; letter-spacing: .05em;
+}
+.key-active  { background: #1f4a2e; color: #3fb950; }
+.key-pending { background: #3d2800; color: #e3b341; }
+.key-revoked { background: #3d0000; color: #f85149; }
+.km-key-meta { font-size: .8rem; color: #484f58; display: flex; gap: .375rem; }
+
+.km-key-value { display: flex; align-items: center; gap: .75rem; }
+.km-key-code {
+  font-family: 'Courier New', monospace; font-size: .8rem; color: #79c0ff;
+  background: #0d1117; border: 1px solid #21262d; border-radius: 4px;
+  padding: .375rem .75rem; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.km-reveal-btn, .km-copy-btn {
+  background: #21262d; color: #8b949e; border: 1px solid #30363d;
+  padding: .3rem .625rem; border-radius: 5px; font-size: .75rem; cursor: pointer;
+  white-space: nowrap;
+}
+.km-reveal-btn:hover, .km-copy-btn:hover { color: #e6edf3; }
+
+.km-key-stats { font-size: .75rem; color: #484f58; display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+.km-usage { margin-left: auto; color: #8b949e; }
+
+.km-key-actions { display: flex; justify-content: flex-end; }
+.km-revoke-btn {
+  background: transparent; color: #f85149; border: 1px solid #f85149;
+  padding: .3rem .75rem; border-radius: 5px; font-size: .8rem; cursor: pointer;
+}
+.km-revoke-btn:hover { background: #3d0000; }
+.km-revoke-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+.km-empty { color: #484f58; font-size: .875rem; text-align: center; padding: 3rem; }
+.dev-page-loading { padding: 4rem; text-align: center; color: #8b949e; }

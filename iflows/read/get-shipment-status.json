@@ -1,0 +1,45 @@
+{
+  "name": "TPAPI_GetShipmentStatus",
+  "description": "Queries V_SHIPMENT_STATUS for a given orderId. Triggered by GET /shipments/{orderId}.",
+  "trigger": {
+    "type": "HTTPReceiver",
+    "endpoint": "/tpapi/internal/shipments/{orderId}",
+    "method": "GET",
+    "authentication": "ClientCertificate"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "type": "Groovy",
+      "script": "buildShipmentQuery.groovy",
+      "description": "SELECT * FROM V_SHIPMENT_STATUS WHERE ORDER_ID = ? AND CUSTOMER_ID = ?",
+      "inputs": ["header.path.orderId", "header.X-Customer-Id"]
+    },
+    {
+      "step": 2,
+      "type": "JDBCChannelSender",
+      "receiverSystem": "Snowflake_Receiver"
+    },
+    {
+      "step": 3,
+      "type": "XMLToJSONConverter"
+    },
+    {
+      "step": 4,
+      "type": "Groovy",
+      "script": "mapShipmentStatus.groovy",
+      "description": "Return 404 if no rows; build Shipment response with empty events array (events sourced from carrier webhook separately)"
+    }
+  ],
+  "receiverSystems": {
+    "Snowflake_Receiver": {
+      "type": "JDBC",
+      "driver": "net.snowflake.client.jdbc.SnowflakeDriver",
+      "connectionUrl": "jdbc:snowflake://${parameter.SF_ACCOUNT}.snowflakecomputing.com",
+      "database": "TPAPI_READ",
+      "schema": "VIEWS",
+      "warehouse": "TPAPI_WH",
+      "credentials": "${parameter.SF_CREDENTIAL_ALIAS}"
+    }
+  }
+}

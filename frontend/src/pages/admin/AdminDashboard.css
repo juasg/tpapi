@@ -1,0 +1,66 @@
+.adm-dashboard { display: flex; flex-direction: column; gap: 2.5rem; }
+
+.adm-page-header { display: flex; flex-direction: column; gap: .25rem; }
+.adm-page-title  { font-size: 1.75rem; font-weight: 700; color: #e6edf3; margin: 0; }
+.adm-page-sub    { font-size: .875rem; color: #8b949e; margin: 0; }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .375rem;
+  border-left: 3px solid;
+}
+.stat-card--purple { border-left-color: #8957e5; }
+.stat-card--blue   { border-left-color: #58a6ff; }
+.stat-card--green  { border-left-color: #3fb950; }
+.stat-card--yellow { border-left-color: #e3b341; }
+.stat-card--red    { border-left-color: #f85149; }
+
+.stat-value { font-size: 2rem; font-weight: 700; color: #e6edf3; line-height: 1; }
+.stat-label { font-size: .8rem; color: #8b949e; font-weight: 500; }
+.stat-sub   { font-size: .72rem; color: #e3b341; margin-top: .125rem; }
+
+.adm-section-title {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #484f58;
+  margin: 0 0 .875rem;
+}
+
+.quick-link-grid {
+  display: flex;
+  flex-direction: column;
+  gap: .625rem;
+}
+
+.quick-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  transition: border-color .15s, background .15s;
+}
+.quick-link:hover { border-color: #8957e5; background: #1c1533; }
+
+.quick-link-icon { font-size: 1.25rem; color: #8957e5; width: 1.5rem; text-align: center; flex-shrink: 0; }
+.quick-link-label { font-size: .9rem; font-weight: 600; color: #e6edf3; }
+.quick-link-sub   { font-size: .78rem; color: #8b949e; margin-top: .125rem; }
+
+.adm-loading { color: #8b949e; padding: 2rem; text-align: center; }
+.adm-error   { color: #f85149; padding: 2rem; font-size: .875rem; }

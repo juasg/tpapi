@@ -1,0 +1,91 @@
+.dev-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #0d1117;
+  color: #e6edf3;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.dev-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
+  height: 3.25rem;
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.dev-logo {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.dev-logo-mark {
+  font-family: 'Courier New', monospace;
+  color: #58a6ff;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.dev-logo-text { font-weight: 600; font-size: .95rem; color: #e6edf3; }
+
+.dev-nav { display: flex; align-items: center; gap: .125rem; flex: 1; }
+.dev-nav-link {
+  color: #8b949e;
+  text-decoration: none;
+  padding: .375rem .75rem;
+  border-radius: 6px;
+  font-size: .875rem;
+  transition: background .15s, color .15s;
+}
+.dev-nav-link:hover { color: #e6edf3; background: #21262d; }
+.dev-nav-link.active { color: #e6edf3; background: #21262d; font-weight: 500; }
+.portal-link { margin-left: auto; border: 1px solid #30363d; color: #58a6ff; }
+.portal-link:hover { border-color: #58a6ff; }
+
+.dev-user { display: flex; align-items: center; gap: .75rem; }
+.dev-user-info { display: flex; flex-direction: column; align-items: flex-end; }
+.dev-company { font-size: .8rem; color: #e6edf3; font-weight: 600; line-height: 1.2; }
+.dev-custid  { font-size: .7rem; color: #484f58; }
+
+.dev-btn-primary {
+  background: #238636;
+  color: #fff;
+  border: none;
+  padding: .375rem .875rem;
+  border-radius: 6px;
+  font-size: .875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.dev-btn-primary:hover { background: #2ea043; }
+.dev-btn-ghost {
+  background: transparent;
+  color: #8b949e;
+  border: 1px solid #30363d;
+  padding: .375rem .75rem;
+  border-radius: 6px;
+  font-size: .875rem;
+  cursor: pointer;
+}
+.dev-btn-ghost:hover { color: #e6edf3; border-color: #8b949e; }
+
+.dev-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .dev-header { padding: 0 1rem; }
+  .dev-content { padding: 1rem; }
+}

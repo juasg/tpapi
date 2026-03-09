@@ -1,0 +1,38 @@
+.invoice-page { display: flex; flex-direction: column; gap: 1.5rem; }
+.page-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.page-title { font-size: 1.5rem; font-weight: 700; color: #1d2d3e; margin: 0; }
+.page-subtitle { font-size: .875rem; color: #6e7e8e; margin: .25rem 0 0; }
+
+.invoice-table-wrap { background: #fff; border: 1px solid #e5e9ef; border-radius: 8px; overflow: hidden; }
+.invoice-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+.invoice-table th {
+  text-align: left; padding: .75rem 1rem; background: #f5f6f8;
+  border-bottom: 1px solid #e5e9ef; font-size: .75rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .05em; color: #6e7e8e;
+}
+.invoice-table td { padding: .875rem 1rem; border-bottom: 1px solid #f0f2f5; color: #1d2d3e; }
+.invoice-table tbody tr:last-child td { border-bottom: none; }
+
+.inv-num { font-weight: 600; color: #0a6ed1; }
+.inv-order { color: #6e7e8e; }
+.inv-amount { font-weight: 600; }
+.overdue-date { color: #bb0000; font-weight: 600; }
+
+.inv-badge {
+  display: inline-block; padding: .25rem .625rem; border-radius: 12px;
+  font-size: .75rem; font-weight: 600; text-transform: uppercase;
+}
+.inv-open     { background: #e8f4ff; color: #0a6ed1; }
+.inv-paid     { background: #e8f9e8; color: #1a7340; }
+.inv-overdue  { background: #ffeaea; color: #bb0000; }
+.inv-cancelled { background: #f0f2f5; color: #6e7e8e; }
+
+.download-link {
+  color: #0a6ed1; font-size: .8rem; font-weight: 600; text-decoration: none;
+  border: 1px solid #c5cdd6; border-radius: 4px; padding: .2rem .5rem;
+}
+.download-link:hover { background: #f5f8ff; }
+
+.empty-state { padding: 3rem; text-align: center; color: #6e7e8e; }
+.page-loading { padding: 3rem; text-align: center; color: #6e7e8e; }
+.page-error { padding: 3rem; text-align: center; color: #bb0000; }

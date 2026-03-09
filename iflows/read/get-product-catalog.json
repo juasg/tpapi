@@ -1,0 +1,44 @@
+{
+  "name": "TPAPI_GetProductCatalog",
+  "description": "Queries V_PRODUCT_CATALOG in Snowflake. Triggered by GET /products. Supports search and category filters.",
+  "trigger": {
+    "type": "HTTPReceiver",
+    "endpoint": "/tpapi/internal/products",
+    "method": "GET",
+    "authentication": "ClientCertificate"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "type": "Groovy",
+      "script": "buildProductCatalogQuery.groovy",
+      "description": "Build SQL with optional WHERE clauses for search and category; apply LIMIT/OFFSET from page/pageSize params"
+    },
+    {
+      "step": 2,
+      "type": "JDBCChannelSender",
+      "receiverSystem": "Snowflake_Receiver"
+    },
+    {
+      "step": 3,
+      "type": "XMLToJSONConverter"
+    },
+    {
+      "step": 4,
+      "type": "Groovy",
+      "script": "mapProductCatalog.groovy",
+      "description": "Transform rows to PaginatedResponse<Product> envelope"
+    }
+  ],
+  "receiverSystems": {
+    "Snowflake_Receiver": {
+      "type": "JDBC",
+      "driver": "net.snowflake.client.jdbc.SnowflakeDriver",
+      "connectionUrl": "jdbc:snowflake://${parameter.SF_ACCOUNT}.snowflakecomputing.com",
+      "database": "TPAPI_READ",
+      "schema": "VIEWS",
+      "warehouse": "TPAPI_WH",
+      "credentials": "${parameter.SF_CREDENTIAL_ALIAS}"
+    }
+  }
+}

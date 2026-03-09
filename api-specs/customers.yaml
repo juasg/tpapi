@@ -1,0 +1,56 @@
+openapi: 3.0.3
+info:
+  title: TPAPI — Customer Onboarding
+  version: "1.0"
+  description: |
+    Self-service customer registration. Creates a customer master record in
+    S/4HANA via BAPI_CUSTOMER_CREATEFROMDATA through an Integration Suite iFlow.
+
+servers:
+  - url: https://{apim-host}/tpapi/v1
+    variables:
+      apim-host: { default: api.tpapi.io }
+
+paths:
+  /customers/register:
+    post:
+      summary: Register a new customer
+      operationId: registerCustomer
+      tags: [Customers]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        "201":
+          description: Customer created in S/4HANA
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterResponse'
+        "409":
+          description: Customer already exists (same email/taxId)
+        "400":
+          description: Validation error
+
+components:
+  schemas:
+    RegisterRequest:
+      type: object
+      required: [companyName, email, phone, address, city, country, taxId]
+      properties:
+        companyName: { type: string, maxLength: 100 }
+        email: { type: string, format: email }
+        phone: { type: string }
+        address: { type: string }
+        city: { type: string }
+        country: { type: string, minLength: 2, maxLength: 2, example: US }
+        taxId: { type: string }
+
+    RegisterResponse:
+      type: object
+      properties:
+        customerId: { type: string, description: "S/4HANA customer number" }
+        message: { type: string }

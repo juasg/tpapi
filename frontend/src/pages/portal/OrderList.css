@@ -1,0 +1,56 @@
+.order-list-page { display: flex; flex-direction: column; gap: 1.5rem; }
+.page-header {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.page-title { font-size: 1.5rem; font-weight: 700; color: #1d2d3e; margin: 0; }
+.page-subtitle { font-size: .875rem; color: #6e7e8e; margin: .25rem 0 0; }
+.header-actions { display: flex; gap: .75rem; align-items: center; }
+
+.filter-select {
+  border: 1px solid #c5cdd6; border-radius: 6px;
+  padding: .5rem .75rem; font-size: .875rem; background: #fff; cursor: pointer;
+}
+.primary-btn {
+  background: #0a6ed1; color: #fff; border: none;
+  padding: .5rem 1rem; border-radius: 6px;
+  font-size: .875rem; font-weight: 600; cursor: pointer;
+}
+.primary-btn:hover { background: #085db3; }
+
+.orders-table-wrap {
+  background: #fff; border: 1px solid #e5e9ef; border-radius: 8px; overflow: hidden;
+}
+.orders-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+.orders-table th {
+  text-align: left; padding: .75rem 1rem;
+  background: #f5f6f8; border-bottom: 1px solid #e5e9ef;
+  font-size: .75rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .05em; color: #6e7e8e;
+}
+.orders-table td { padding: .875rem 1rem; border-bottom: 1px solid #f0f2f5; color: #1d2d3e; }
+.orders-table tbody tr { cursor: pointer; transition: background .1s; }
+.orders-table tbody tr:hover { background: #f5f8ff; }
+.orders-table tbody tr:last-child td { border-bottom: none; }
+
+.order-num { font-weight: 600; color: #0a6ed1; }
+.order-total { font-weight: 600; }
+
+.status-badge {
+  display: inline-block; padding: .25rem .625rem; border-radius: 12px;
+  font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em;
+}
+.status-draft     { background: #f0f2f5; color: #6e7e8e; }
+.status-submitted { background: #e8f4ff; color: #0a6ed1; }
+.status-confirmed { background: #e8f9e8; color: #1a7340; }
+.status-in-delivery { background: #fff4e0; color: #c05000; }
+.status-delivered { background: #e8f9e8; color: #1a7340; }
+.status-cancelled { background: #ffeaea; color: #bb0000; }
+
+.row-action {
+  background: none; border: none; color: #0a6ed1;
+  font-size: .875rem; cursor: pointer; padding: 0;
+}
+.empty-state { padding: 3rem; text-align: center; color: #6e7e8e; }
+.page-loading { padding: 3rem; text-align: center; color: #6e7e8e; }
+.page-error { padding: 3rem; text-align: center; color: #bb0000; }

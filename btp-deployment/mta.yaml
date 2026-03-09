@@ -1,0 +1,173 @@
+_schema-version: "3.1"
+ID: tpapi
+version: 1.0.0
+description: TPAPI B2B Customer Portal & API Platform
+
+modules:
+  # ── Frontend SPA (Cloud Foundry static buildpack) ─────────────────────────
+  - name: tpapi-frontend
+    type: staticfile
+    path: ../frontend
+    build-parameters:
+      builder: custom
+      commands:
+        - npm ci
+        - npm run build
+      build-result: dist
+    parameters:
+      disk-quota: 256M
+      memory: 64M
+      buildpack: staticfile_buildpack
+    properties:
+      FORCE_HTTPS: true
+    requires:
+      - name: tpapi-destination
+      - name: tpapi-xsuaa
+    provides:
+      - name: tpapi-frontend-url
+        properties:
+          url: ${default-url}
+
+  # ── Backend API (Node.js / Express) ───────────────────────────────────────
+  - name: tpapi-backend
+    type: nodejs
+    path: ../backend
+    build-parameters:
+      builder: custom
+      commands:
+        - npm ci --omit=dev
+        - npm run build
+    parameters:
+      disk-quota: 512M
+      memory: 256M
+      buildpack: nodejs_buildpack
+    properties:
+      NODE_ENV: production
+      PORT: "8080"
+      # Set via: cf set-env tpapi-backend ALLOWED_ORIGINS "https://tpapi-approuter.<domain>"
+      ALLOWED_ORIGINS: ""
+    requires:
+      - name: tpapi-xsuaa
+      - name: tpapi-connectivity
+      - name: tpapi-cloud-logging
+      - name: tpapi-autoscaler
+    provides:
+      - name: tpapi-backend-url
+        properties:
+          url: ${default-url}
+
+  # ── Approuter (for SAP IAS OIDC + destination routing) ────────────────────
+  - name: tpapi-approuter
+    type: approuter.nodejs
+    path: approuter
+    parameters:
+      disk-quota: 256M
+      memory: 128M
+    properties:
+      TENANT_HOST_PATTERN: "^(.*).${default-domain}"
+    requires:
+      - name: tpapi-xsuaa
+      - name: tpapi-destination
+      - name: tpapi-frontend-url
+        group: destinations
+        properties:
+          name: ui
+          url: ~{url}
+          forwardAuthToken: true
+      - name: tpapi-backend-url
+        group: destinations
+        properties:
+          name: api
+          url: ~{url}
+          forwardAuthToken: true
+
+resources:
+  # ── XSUAA (SAP IAS trust + OAuth2) ────────────────────────────────────────
+  - name: tpapi-xsuaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      config:
+        xsappname: tpapi
+        tenant-mode: dedicated
+        oauth2-configuration:
+          redirect-uris:
+            - https://*.${default-domain}/auth/callback
+        scopes:
+          - name: "$XSAPPNAME.orders.read"
+            description: Read orders
+          - name: "$XSAPPNAME.orders.write"
+            description: Create orders
+          - name: "$XSAPPNAME.invoices.read"
+            description: Read invoices
+          - name: "$XSAPPNAME.developer"
+            description: Developer portal access
+        role-templates:
+          - name: Customer
+            description: Standard B2B customer
+            scope-references:
+              - "$XSAPPNAME.orders.read"
+              - "$XSAPPNAME.orders.write"
+              - "$XSAPPNAME.invoices.read"
+          - name: Developer
+            description: API developer access
+            scope-references:
+              - "$XSAPPNAME.developer"
+
+  # ── Destination Service ────────────────────────────────────────────────────
+  - name: tpapi-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+
+  # ── Connectivity (Cloud Connector for S/4 on-premise) ─────────────────────
+  - name: tpapi-connectivity
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: connectivity
+      service-plan: lite
+
+  # ── SAP Cloud Logging (structured JSON logs + dashboards) ─────────────────
+  - name: tpapi-cloud-logging
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: cloud-logging
+      service-plan: standard
+      config:
+        retentionPeriod: 30      # days
+        ingestors:
+          - type: CloudFoundry
+
+  # ── Application Autoscaler ─────────────────────────────────────────────────
+  - name: tpapi-autoscaler
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: autoscaler
+      service-plan: standard
+      config:
+        instance_min_count: 1
+        instance_max_count: 4
+        scaling_rules:
+          - metric_type: memoryused
+            stat_window_secs: 60
+            breach_duration_secs: 60
+            threshold: 400
+            operator: ">"
+            cool_down_secs: 300
+            adjustment: "+1"
+          - metric_type: memoryused
+            stat_window_secs: 60
+            breach_duration_secs: 120
+            threshold: 200
+            operator: "<"
+            cool_down_secs: 300
+            adjustment: "-1"
+          - metric_type: cpu
+            stat_window_secs: 60
+            breach_duration_secs: 60
+            threshold: 70
+            operator: ">"
+            cool_down_secs: 300
+            adjustment: "+1"

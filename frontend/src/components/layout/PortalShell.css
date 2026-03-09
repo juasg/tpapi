@@ -1,0 +1,100 @@
+/* ─── Shell Layout ─────────────────────────────────────────────────────────── */
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f5f6f8;
+  font-family: '72', 'SAP72', Arial, sans-serif;
+}
+
+.shell-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
+  height: 3rem;
+  background: #0a6ed1;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+
+.shell-logo {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.logo-mark {
+  background: #fff;
+  color: #0a6ed1;
+  font-weight: 700;
+  font-size: .75rem;
+  padding: .2rem .4rem;
+  border-radius: 4px;
+  letter-spacing: .05em;
+}
+.logo-text { font-weight: 600; font-size: .95rem; }
+
+.shell-nav {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  flex: 1;
+}
+.shell-nav-link {
+  color: rgba(255,255,255,.85);
+  text-decoration: none;
+  padding: .375rem .75rem;
+  border-radius: 4px;
+  font-size: .875rem;
+  transition: background .15s;
+}
+.shell-nav-link:hover { background: rgba(255,255,255,.12); color: #fff; }
+.shell-nav-link.active { background: rgba(255,255,255,.2); color: #fff; font-weight: 600; }
+.dev-link { margin-left: auto; border: 1px solid rgba(255,255,255,.4); }
+
+.shell-user { display: flex; align-items: center; gap: .75rem; }
+.user-info { display: flex; flex-direction: column; align-items: flex-end; }
+.user-name { font-size: .875rem; font-weight: 600; line-height: 1.2; }
+.user-id   { font-size: .7rem; opacity: .65; }
+
+.btn-primary {
+  background: #fff;
+  color: #0a6ed1;
+  border: none;
+  padding: .375rem .875rem;
+  border-radius: 4px;
+  font-size: .875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-ghost {
+  background: transparent;
+  color: rgba(255,255,255,.85);
+  border: 1px solid rgba(255,255,255,.4);
+  padding: .375rem .75rem;
+  border-radius: 4px;
+  font-size: .875rem;
+  cursor: pointer;
+}
+.btn-ghost:hover { background: rgba(255,255,255,.1); color: #fff; }
+
+.shell-content {
+  flex: 1;
+  padding: 1.5rem 2rem;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .shell-header { padding: 0 1rem; gap: 1rem; }
+  .shell-nav { gap: 0; }
+  .shell-nav-link { padding: .375rem .5rem; font-size: .8rem; }
+  .shell-content { padding: 1rem; }
+}
