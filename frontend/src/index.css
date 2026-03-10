@@ -1,18 +1,57 @@
+/* ── Trulieve-inspired Design System ──────────────────────────────────────── */
+:root {
+  --green-900: #1B4332;
+  --green-800: #2D6A4F;
+  --green-700: #40916C;
+  --green-500: #52B788;
+  --green-300: #95D5B2;
+  --green-100: #D8F3DC;
+  --green-50:  #EEFBF1;
+
+  --cream:      #F7F4EF;
+  --cream-dark: #EDE8E0;
+  --white:      #FFFFFF;
+  --slate:      #CED9E5;
+  --slate-light:#E8EFF6;
+
+  --text-900:  #111D11;
+  --text-700:  #2D4A2D;
+  --text-500:  #4A6741;
+  --text-300:  #8BAE8B;
+
+  --border:       #D4E4D4;
+  --border-light: #E8F0E8;
+
+  --red:          #C0392B;
+  --red-light:    #FDECEA;
+  --amber:        #B07D00;
+  --amber-light:  #FEF9E7;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 1px 3px rgba(27,67,50,.07);
+  --shadow-md: 0 4px 16px rgba(27,67,50,.09);
+  --shadow-lg: 0 8px 32px rgba(27,67,50,.13);
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: '72', 'SAP72', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f5f6f8;
-  color: #1d2d3e;
+  background: var(--cream);
+  color: var(--text-900);
   min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 #root { min-height: 100vh; }
 
-/* Reset Vite defaults */
-a { color: inherit; }
+a { color: var(--green-800); }
 button { font-family: inherit; }
 input, select, textarea { font-family: inherit; }

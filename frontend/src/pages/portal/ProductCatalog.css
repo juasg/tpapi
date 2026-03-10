@@ -1,4 +1,5 @@
-.catalog-page { display: flex; flex-direction: column; gap: 1.5rem; }
+/* ── Trulieve Theme — Product Catalog ─────────────────────────────────────── */
+.catalog-page { display: flex; flex-direction: column; gap: 2rem; }
 
 .catalog-header {
   display: flex;
@@ -7,58 +8,71 @@
   gap: 1rem;
   flex-wrap: wrap;
 }
-.page-title { font-size: 1.5rem; font-weight: 700; color: #1d2d3e; margin: 0; }
-.page-subtitle { font-size: .875rem; color: #6e7e8e; margin: .25rem 0 0; }
+.page-title    { font-size: 1.75rem; font-weight: 800; color: var(--green-900); margin: 0; }
+.page-subtitle { font-size: .875rem; color: var(--text-500); margin: .25rem 0 0; }
 
-.catalog-actions { display: flex; align-items: center; gap: .75rem; }
+.catalog-actions { display: flex; align-items: center; gap: .875rem; }
+.search-box { position: relative; }
 .search-input {
-  border: 1px solid #c5cdd6;
-  border-radius: 6px;
-  padding: .5rem .875rem;
+  border: 1.5px solid var(--border);
+  border-radius: 24px;
+  padding: .55rem 1.125rem;
   font-size: .875rem;
-  width: 220px;
+  width: 240px;
   outline: none;
-  transition: border .15s;
+  background: var(--white);
+  color: var(--text-900);
+  transition: border .15s, box-shadow .15s;
 }
-.search-input:focus { border-color: #0a6ed1; box-shadow: 0 0 0 2px rgba(10,110,209,.15); }
+.search-input:focus {
+  border-color: var(--green-700);
+  box-shadow: 0 0 0 3px rgba(64,145,108,.12);
+}
+.search-input::placeholder { color: #BCC8BC; }
 
 .cart-btn {
-  background: #0a6ed1;
+  background: var(--green-800);
   color: #fff;
   border: none;
-  padding: .5rem 1.125rem;
-  border-radius: 6px;
+  padding: .55rem 1.25rem;
+  border-radius: 24px;
   font-size: .875rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
+  transition: background .15s;
+  letter-spacing: .02em;
 }
-.cart-btn:hover { background: #085db3; }
+.cart-btn:hover { background: var(--green-900); }
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.25rem;
 }
 
 .product-card {
-  background: #fff;
-  border: 1px solid #e5e9ef;
-  border-radius: 8px;
+  background: var(--white);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: box-shadow .15s;
+  transition: box-shadow .2s, transform .2s, border-color .2s;
 }
-.product-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+.product-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--green-300);
+}
 
 /* Product image */
 .product-img-wrap {
   width: 100%;
-  height: 160px;
+  height: 168px;
   overflow: hidden;
-  background: #f0f2f5;
+  background: var(--green-50);
   flex-shrink: 0;
 }
 .product-img {
@@ -66,62 +80,83 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform .3s ease;
+  transition: transform .35s ease;
 }
-.product-card:hover .product-img { transform: scale(1.04); }
+.product-card:hover .product-img { transform: scale(1.06); }
 
-/* Card body — padded sections */
+/* Card body */
 .product-category {
-  font-size: .7rem;
-  font-weight: 600;
+  font-size: .68rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .08em;
-  color: #0a6ed1;
+  letter-spacing: .1em;
+  color: var(--green-700);
   padding: .875rem 1.25rem 0;
 }
-.product-name { font-size: 1rem; font-weight: 600; color: #1d2d3e; margin: .25rem 0 0; padding: 0 1.25rem; }
-.product-desc { font-size: .8rem; color: #6e7e8e; margin: .375rem 0 0; flex: 1; line-height: 1.5; padding: 0 1.25rem; }
+.product-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-900);
+  margin: .25rem 0 0;
+  padding: 0 1.25rem;
+  line-height: 1.3;
+}
+.product-desc {
+  font-size: .82rem;
+  color: var(--text-500);
+  margin: .375rem 0 0;
+  flex: 1;
+  line-height: 1.55;
+  padding: 0 1.25rem;
+}
 
 .product-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: .75rem 1.25rem 1.25rem;
+  padding: .875rem 1.25rem 1.25rem;
   margin-top: auto;
 }
-.product-price { font-size: .95rem; font-weight: 700; color: #1d2d3e; }
-.product-unit { font-weight: 400; font-size: .8rem; color: #6e7e8e; }
+.product-price { font-size: 1rem; font-weight: 800; color: var(--green-900); }
+.product-unit  { font-weight: 500; font-size: .8rem; color: var(--text-300); margin-left: .2rem; }
 
-.product-qty { display: flex; align-items: center; gap: .5rem; }
+.product-qty   { display: flex; align-items: center; gap: .5rem; }
 .qty-btn {
-  width: 28px; height: 28px;
-  border: 1px solid #c5cdd6;
-  border-radius: 4px;
-  background: #f5f6f8;
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--green-800);
   font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s, border-color .15s;
 }
-.qty-btn:hover { background: #e5e9ef; }
-.qty-value { font-size: .875rem; font-weight: 600; min-width: 24px; text-align: center; }
+.qty-btn:hover { background: var(--green-100); border-color: var(--green-500); }
+.qty-value { font-size: .875rem; font-weight: 700; min-width: 24px; text-align: center; color: var(--text-900); }
 
 .product-unavailable {
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,.8);
-  border-radius: 8px;
+  background: rgba(247,244,239,.88);
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: .875rem;
-  font-weight: 600;
-  color: #bb0000;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: .02em;
 }
 
 .page-loading, .page-error {
   padding: 3rem;
   text-align: center;
-  color: #6e7e8e;
+  color: var(--text-500);
   font-size: .95rem;
 }
-.page-error { color: #bb0000; }
+.page-error { color: var(--red); }

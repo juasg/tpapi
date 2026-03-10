@@ -1,63 +1,69 @@
-.order-detail-page { display: flex; flex-direction: column; gap: 1.5rem; }
-.detail-breadcrumb { margin-bottom: -.5rem; }
-.back-btn { background: none; border: none; color: #0a6ed1; font-size: .875rem; cursor: pointer; padding: 0; }
+/* ── Trulieve Theme — Order Detail ────────────────────────────────────────── */
+.order-detail-page { display: flex; flex-direction: column; gap: 2rem; }
+.detail-breadcrumb { margin-bottom: -.75rem; }
+.back-btn { background: none; border: none; color: var(--green-800); font-size: .875rem; cursor: pointer; padding: 0; font-weight: 600; }
 .back-btn:hover { text-decoration: underline; }
 .detail-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-.page-title { font-size: 1.5rem; font-weight: 700; color: #1d2d3e; margin: 0; }
-.page-subtitle { font-size: .875rem; color: #6e7e8e; margin: .25rem 0 0; }
+.page-title    { font-size: 1.75rem; font-weight: 800; color: var(--green-900); margin: 0; }
+.page-subtitle { font-size: .875rem; color: var(--text-500); margin: .25rem 0 0; }
 
 .status-badge {
-  display: inline-block; padding: .375rem .875rem; border-radius: 16px;
-  font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  display: inline-block; padding: .375rem .9rem; border-radius: 16px;
+  font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
 }
-.status-submitted   { background: #e8f4ff; color: #0a6ed1; }
-.status-confirmed   { background: #e8f9e8; color: #1a7340; }
-.status-in-delivery { background: #fff4e0; color: #c05000; }
-.status-delivered   { background: #e8f9e8; color: #1a7340; }
-.status-cancelled   { background: #ffeaea; color: #bb0000; }
-.status-draft       { background: #f0f2f5; color: #6e7e8e; }
+.status-submitted   { background: var(--slate-light);  color: #1D4ED8; }
+.status-confirmed   { background: var(--green-100);    color: var(--green-800); }
+.status-in-delivery { background: var(--amber-light);  color: var(--amber); }
+.status-delivered   { background: var(--green-50);     color: var(--green-700); }
+.status-cancelled   { background: var(--red-light);    color: var(--red); }
+.status-draft       { background: var(--cream-dark);   color: var(--text-500); }
 
-.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
 @media (max-width: 900px) { .detail-grid { grid-template-columns: 1fr; } }
 
 .detail-card {
-  background: #fff; border: 1px solid #e5e9ef; border-radius: 8px; padding: 1.5rem;
+  background: var(--white);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
 }
-.card-title { font-size: 1rem; font-weight: 600; color: #1d2d3e; margin: 0 0 1rem; }
+.card-title { font-size: 1rem; font-weight: 700; color: var(--green-900); margin: 0 0 1.25rem; }
 
 .items-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
 .items-table th {
-  text-align: left; padding: .5rem .75rem; background: #f5f6f8;
-  border-bottom: 1px solid #e5e9ef; font-size: .75rem; font-weight: 600;
-  text-transform: uppercase; letter-spacing: .05em; color: #6e7e8e;
+  text-align: left; padding: .5rem .875rem;
+  background: var(--green-50); border-bottom: 1.5px solid var(--border-light);
+  font-size: .72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .07em; color: var(--green-700);
 }
-.items-table td { padding: .625rem .75rem; border-bottom: 1px solid #f0f2f5; color: #1d2d3e; }
+.items-table td { padding: .7rem .875rem; border-bottom: 1px solid var(--border-light); color: var(--text-900); }
 .items-table tbody tr:last-child td { border-bottom: none; }
-.items-table tfoot td { border-top: 2px solid #e5e9ef; padding-top: .75rem; }
-.item-total { font-weight: 600; }
-.total-label { font-weight: 600; color: #6e7e8e; }
-.order-grand-total { font-size: 1rem; font-weight: 700; color: #0a6ed1; }
+.items-table tfoot td { border-top: 2px solid var(--border); padding-top: .875rem; }
+.item-total     { font-weight: 700; }
+.total-label    { font-weight: 700; color: var(--text-500); }
+.order-grand-total { font-size: 1.05rem; font-weight: 800; color: var(--green-800); }
 
-.shipment-meta { display: flex; flex-direction: column; gap: .375rem; font-size: .875rem; color: #6e7e8e; margin-bottom: 1.25rem; }
-.shipment-meta strong { color: #1d2d3e; }
+.shipment-meta { display: flex; flex-direction: column; gap: .375rem; font-size: .875rem; color: var(--text-500); margin-bottom: 1.375rem; }
+.shipment-meta strong { color: var(--text-900); font-weight: 600; }
 
-.shipment-timeline { display: flex; flex-direction: column; gap: 0; }
-.timeline-event { display: flex; gap: 1rem; padding-bottom: 1.25rem; position: relative; }
+.shipment-timeline { display: flex; flex-direction: column; }
+.timeline-event { display: flex; gap: 1rem; padding-bottom: 1.375rem; position: relative; }
 .timeline-event:last-child { padding-bottom: 0; }
 .timeline-event::before {
   content: ''; position: absolute; left: 7px; top: 20px; bottom: 0;
-  width: 2px; background: #e5e9ef;
+  width: 2px; background: var(--green-100);
 }
 .timeline-event:last-child::before { display: none; }
 .timeline-dot {
   width: 16px; height: 16px; border-radius: 50%;
-  background: #0a6ed1; border: 3px solid #e8f4ff;
+  background: var(--green-700); border: 3px solid var(--green-50);
   flex-shrink: 0; margin-top: 2px;
 }
-.timeline-body { display: flex; flex-direction: column; gap: .2rem; }
-.timeline-status { font-size: .875rem; font-weight: 600; color: #1d2d3e; text-transform: capitalize; }
-.timeline-desc { font-size: .8rem; color: #6e7e8e; }
-.timeline-meta { font-size: .75rem; color: #9eaebb; }
+.timeline-body  { display: flex; flex-direction: column; gap: .2rem; }
+.timeline-status { font-size: .875rem; font-weight: 700; color: var(--text-900); text-transform: capitalize; }
+.timeline-desc  { font-size: .8rem; color: var(--text-500); }
+.timeline-meta  { font-size: .75rem; color: var(--text-300); }
 
-.page-loading, .page-error { padding: 3rem; text-align: center; color: #6e7e8e; }
-.page-error { color: #bb0000; }
+.page-loading, .page-error { padding: 3rem; text-align: center; color: var(--text-500); }
+.page-error { color: var(--red); }

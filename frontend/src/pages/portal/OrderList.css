@@ -1,56 +1,54 @@
-.order-list-page { display: flex; flex-direction: column; gap: 1.5rem; }
-.page-header {
-  display: flex; align-items: flex-end;
-  justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-}
-.page-title { font-size: 1.5rem; font-weight: 700; color: #1d2d3e; margin: 0; }
-.page-subtitle { font-size: .875rem; color: #6e7e8e; margin: .25rem 0 0; }
+/* ── Trulieve Theme — Order List ──────────────────────────────────────────── */
+.order-list-page { display: flex; flex-direction: column; gap: 2rem; }
+.page-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.page-title    { font-size: 1.75rem; font-weight: 800; color: var(--green-900); margin: 0; }
+.page-subtitle { font-size: .875rem; color: var(--text-500); margin: .25rem 0 0; }
 .header-actions { display: flex; gap: .75rem; align-items: center; }
 
 .filter-select {
-  border: 1px solid #c5cdd6; border-radius: 6px;
-  padding: .5rem .75rem; font-size: .875rem; background: #fff; cursor: pointer;
+  border: 1.5px solid var(--border); border-radius: 24px;
+  padding: .5rem 1rem; font-size: .875rem; background: var(--white);
+  color: var(--text-900); cursor: pointer; outline: none;
 }
+.filter-select:focus { border-color: var(--green-700); }
+
 .primary-btn {
-  background: #0a6ed1; color: #fff; border: none;
-  padding: .5rem 1rem; border-radius: 6px;
-  font-size: .875rem; font-weight: 600; cursor: pointer;
+  background: var(--green-800); color: #fff; border: none;
+  padding: .55rem 1.25rem; border-radius: 24px;
+  font-size: .875rem; font-weight: 700; cursor: pointer; transition: background .15s;
 }
-.primary-btn:hover { background: #085db3; }
+.primary-btn:hover { background: var(--green-900); }
 
 .orders-table-wrap {
-  background: #fff; border: 1px solid #e5e9ef; border-radius: 8px; overflow: hidden;
+  background: var(--white); border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);
 }
 .orders-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
 .orders-table th {
-  text-align: left; padding: .75rem 1rem;
-  background: #f5f6f8; border-bottom: 1px solid #e5e9ef;
-  font-size: .75rem; font-weight: 600; text-transform: uppercase;
-  letter-spacing: .05em; color: #6e7e8e;
+  text-align: left; padding: .875rem 1.125rem;
+  background: var(--green-50); border-bottom: 1.5px solid var(--border-light);
+  font-size: .72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .07em; color: var(--green-700);
 }
-.orders-table td { padding: .875rem 1rem; border-bottom: 1px solid #f0f2f5; color: #1d2d3e; }
-.orders-table tbody tr { cursor: pointer; transition: background .1s; }
-.orders-table tbody tr:hover { background: #f5f8ff; }
+.orders-table td { padding: 1rem 1.125rem; border-bottom: 1px solid var(--border-light); color: var(--text-900); }
+.orders-table tbody tr { cursor: pointer; transition: background .12s; }
+.orders-table tbody tr:hover { background: var(--green-50); }
 .orders-table tbody tr:last-child td { border-bottom: none; }
 
-.order-num { font-weight: 600; color: #0a6ed1; }
-.order-total { font-weight: 600; }
+.order-num   { font-weight: 700; color: var(--green-800); }
+.order-total { font-weight: 700; }
 
 .status-badge {
-  display: inline-block; padding: .25rem .625rem; border-radius: 12px;
-  font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em;
+  display: inline-block; padding: .25rem .7rem; border-radius: 12px;
+  font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
 }
-.status-draft     { background: #f0f2f5; color: #6e7e8e; }
-.status-submitted { background: #e8f4ff; color: #0a6ed1; }
-.status-confirmed { background: #e8f9e8; color: #1a7340; }
-.status-in-delivery { background: #fff4e0; color: #c05000; }
-.status-delivered { background: #e8f9e8; color: #1a7340; }
-.status-cancelled { background: #ffeaea; color: #bb0000; }
+.status-draft       { background: var(--cream-dark); color: var(--text-500); }
+.status-submitted   { background: var(--slate-light); color: #1D4ED8; }
+.status-confirmed   { background: var(--green-100); color: var(--green-800); }
+.status-in-delivery { background: var(--amber-light); color: var(--amber); }
+.status-delivered   { background: var(--green-50); color: var(--green-700); }
+.status-cancelled   { background: var(--red-light); color: var(--red); }
 
-.row-action {
-  background: none; border: none; color: #0a6ed1;
-  font-size: .875rem; cursor: pointer; padding: 0;
-}
-.empty-state { padding: 3rem; text-align: center; color: #6e7e8e; }
-.page-loading { padding: 3rem; text-align: center; color: #6e7e8e; }
-.page-error { padding: 3rem; text-align: center; color: #bb0000; }
+.row-action { background: none; border: none; color: var(--green-800); font-size: .875rem; cursor: pointer; padding: 0; font-weight: 600; }
+.empty-state, .page-loading { padding: 3rem; text-align: center; color: var(--text-500); }
+.page-error { padding: 3rem; text-align: center; color: var(--red); }

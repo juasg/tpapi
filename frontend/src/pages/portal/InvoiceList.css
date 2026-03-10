@@ -1,38 +1,43 @@
-.invoice-page { display: flex; flex-direction: column; gap: 1.5rem; }
-.page-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-.page-title { font-size: 1.5rem; font-weight: 700; color: #1d2d3e; margin: 0; }
-.page-subtitle { font-size: .875rem; color: #6e7e8e; margin: .25rem 0 0; }
+/* ── Trulieve Theme — Invoice List ────────────────────────────────────────── */
+.invoice-page { display: flex; flex-direction: column; gap: 2rem; }
+.page-header  { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.page-title    { font-size: 1.75rem; font-weight: 800; color: var(--green-900); margin: 0; }
+.page-subtitle { font-size: .875rem; color: var(--text-500); margin: .25rem 0 0; }
 
-.invoice-table-wrap { background: #fff; border: 1px solid #e5e9ef; border-radius: 8px; overflow: hidden; }
+.invoice-table-wrap {
+  background: var(--white); border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);
+}
 .invoice-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
 .invoice-table th {
-  text-align: left; padding: .75rem 1rem; background: #f5f6f8;
-  border-bottom: 1px solid #e5e9ef; font-size: .75rem; font-weight: 600;
-  text-transform: uppercase; letter-spacing: .05em; color: #6e7e8e;
+  text-align: left; padding: .875rem 1.125rem;
+  background: var(--green-50); border-bottom: 1.5px solid var(--border-light);
+  font-size: .72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .07em; color: var(--green-700);
 }
-.invoice-table td { padding: .875rem 1rem; border-bottom: 1px solid #f0f2f5; color: #1d2d3e; }
+.invoice-table td { padding: 1rem 1.125rem; border-bottom: 1px solid var(--border-light); color: var(--text-900); }
 .invoice-table tbody tr:last-child td { border-bottom: none; }
 
-.inv-num { font-weight: 600; color: #0a6ed1; }
-.inv-order { color: #6e7e8e; }
-.inv-amount { font-weight: 600; }
-.overdue-date { color: #bb0000; font-weight: 600; }
+.inv-num    { font-weight: 700; color: var(--green-800); }
+.inv-order  { color: var(--text-500); }
+.inv-amount { font-weight: 700; }
+.overdue-date { color: var(--red); font-weight: 700; }
 
 .inv-badge {
-  display: inline-block; padding: .25rem .625rem; border-radius: 12px;
-  font-size: .75rem; font-weight: 600; text-transform: uppercase;
+  display: inline-block; padding: .25rem .7rem; border-radius: 12px;
+  font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
 }
-.inv-open     { background: #e8f4ff; color: #0a6ed1; }
-.inv-paid     { background: #e8f9e8; color: #1a7340; }
-.inv-overdue  { background: #ffeaea; color: #bb0000; }
-.inv-cancelled { background: #f0f2f5; color: #6e7e8e; }
+.inv-open      { background: var(--slate-light); color: #1D4ED8; }
+.inv-paid      { background: var(--green-100);   color: var(--green-800); }
+.inv-overdue   { background: var(--red-light);   color: var(--red); }
+.inv-cancelled { background: var(--cream-dark);  color: var(--text-500); }
 
 .download-link {
-  color: #0a6ed1; font-size: .8rem; font-weight: 600; text-decoration: none;
-  border: 1px solid #c5cdd6; border-radius: 4px; padding: .2rem .5rem;
+  color: var(--green-800); font-size: .8rem; font-weight: 700; text-decoration: none;
+  border: 1.5px solid var(--border); border-radius: 20px; padding: .25rem .75rem;
+  transition: all .15s;
 }
-.download-link:hover { background: #f5f8ff; }
+.download-link:hover { background: var(--green-50); border-color: var(--green-500); }
 
-.empty-state { padding: 3rem; text-align: center; color: #6e7e8e; }
-.page-loading { padding: 3rem; text-align: center; color: #6e7e8e; }
-.page-error { padding: 3rem; text-align: center; color: #bb0000; }
+.empty-state, .page-loading { padding: 3rem; text-align: center; color: var(--text-500); }
+.page-error { padding: 3rem; text-align: center; color: var(--red); }
